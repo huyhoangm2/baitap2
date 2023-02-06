@@ -1,25 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import  { useState } from 'react';
 
-function App() {
+function UserForm({setName} ) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      Name:<input type="text" name="Name" placeholder="please enter name"
+      onChange={(e) => setName(e.target.value)}/>
+    </div>
+  );
+}
+function Greeting({name}) {
+  return<div>{name && `Greeting ${name}` } </div>;
+
+}
+export default function App() {
+  const [name, setName] = useState("");
+  
+
+  return (
+    <div>
+      <UserForm setName={setName}/>
+      <Greeting name={name}/>
     </div>
   );
 }
 
-export default App;
